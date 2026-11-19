@@ -1,0 +1,6 @@
+venv
+.git
+.env
+__pycache__
+chroma_db
+eval_report.json

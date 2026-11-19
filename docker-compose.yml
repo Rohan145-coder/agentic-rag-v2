@@ -1,0 +1,23 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file: .env          # holds GROQ_API_KEY and LLM_MODEL (never baked into the image)
+    volumes:
+      - chroma_data:/app/chroma_db   # the vector DB survives container restarts
+    restart: unless-stopped
+
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://api:8000
+    depends_on:
+      - api
+
+volumes:
+  chroma_data:

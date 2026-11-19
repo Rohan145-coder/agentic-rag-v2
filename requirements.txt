@@ -1,0 +1,10 @@
+pypdf
+python-dotenv
+groq
+sentence-transformers
+chromadb
+rank_bm25
+fastapi
+uvicorn[standard]
+pydantic
+python-multipart
